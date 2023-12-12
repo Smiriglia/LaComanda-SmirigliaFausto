@@ -1,0 +1,950 @@
+{
+	"info": {
+		"_postman_id": "ded135e7-87be-4e9e-bd72-f7d45d9f49c2",
+		"name": "TP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29418363"
+	},
+	"item": [
+		{
+			"name": "crearSuperUsuario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/admin",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sesion/loguear",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ejemplo@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/sesion",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"sesion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sesion/logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/sesion",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"sesion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuarios/traerTodos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/usuarios",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuarios/traerUno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/usuarios/id?id=1",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"usuarios",
+						"id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuarios/crearUno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Hooper",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "desconocido@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "clave",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "rol",
+							"value": "mozo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/usuarios",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuarios/modificarUno",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "nombre",
+							"value": "FaustoSmiriglia",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "tanito@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "clave",
+							"value": "94270",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "rol",
+							"value": "mozo",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "estado",
+							"value": "activo",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/usuarios/",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuarios/borrarUno",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/usuarios/",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "productos/traerTodos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/productos/",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"productos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "productos/traerUno",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/productos/id?id=9",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"productos",
+						"id"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "productos/crearUno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombre",
+							"value": "Milanesa a caballo",
+							"type": "text"
+						},
+						{
+							"key": "tipo",
+							"value": "comida",
+							"type": "text"
+						},
+						{
+							"key": "precio",
+							"value": "2800",
+							"type": "text"
+						},
+						{
+							"key": "tiempoPreparacion",
+							"value": "45",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/productos/",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"productos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "productos/modificarUno",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "Milanesa a caballo con fritas",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "id",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "tiempoPreparacion",
+							"value": "25",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/productos",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"productos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "productos/borrarUno",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/productos/",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"productos",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mesa/CrearUno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:666/mesas/",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"mesas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mesas/traerTodos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/mesas/",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"mesas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mesas/traerUno",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/mesas/id",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"mesas",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mesas/modificarUno",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "nombreMozo",
+							"value": "Mayra",
+							"type": "text"
+						},
+						{
+							"key": "estado",
+							"value": "en uso",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/mesas/",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"mesas",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "mesas/borrarUno",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/mesas",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"mesas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos/traerTodos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos/traerUno",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "codigoPedido",
+							"value": "XfzKMN2Qn7OcyHGU",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/pedidos/codigo",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"pedidos",
+						"codigo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos/cargarUno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigoPedido",
+							"value": "XEAmJxUaF3GBRc5q",
+							"type": "text"
+						},
+						{
+							"key": "nombreCliente",
+							"value": "Pepita",
+							"type": "text"
+						},
+						{
+							"key": "idProducto",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "cantidad",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos/modificarUno",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "idProducto",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "nombreCliente",
+							"value": "Juanita",
+							"type": "text"
+						},
+						{
+							"key": "cantidad",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos/borrarUno",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"pedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos/porSector",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:666/pedidos/por/sector",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"pedidos",
+						"por",
+						"sector"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedido/prepararPedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/pedidos/sector/preparar/5",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"pedidos",
+						"sector",
+						"preparar",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedido/entregarPedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/pedidos/sector/preparado/22",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"pedidos",
+						"sector",
+						"preparado",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pedidos/servirPedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/pedidos/entregar/pedido/22",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"pedidos",
+						"entregar",
+						"pedido",
+						"22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cobrar/mesa",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigo",
+							"value": "XEAmJxUaF3GBRc5q",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/cobrar",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"cobrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "archivos/cargarCSV",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "archivo",
+							"type": "file",
+							"src": "/C:/Users/tanii/Desktop/productos.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:666/archivos/cargarProductos",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"archivos",
+						"cargarProductos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "archivos/descargarPedidos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:666/archivos/descargarPedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"archivos",
+						"descargarPedidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "archivos/descargarUsuarios",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "localhost:666/archivos/descargarUsuarios",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"archivos",
+						"descargarUsuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Promedio 30 Dias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/archivos/promedio",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"archivos",
+						"promedio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transacciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/transacciones",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"transacciones"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
