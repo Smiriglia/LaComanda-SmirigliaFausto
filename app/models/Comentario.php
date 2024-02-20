@@ -59,11 +59,4 @@ class Comentario{
         $consulta->execute();
     }
     
-    public static function ValidarComentario($comentario){
-        if($comentario){
-            return true;
-        }
-        return false;
-    }
-    
 }

@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "ded135e7-87be-4e9e-bd72-f7d45d9f49c2",
 		"name": "TP",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
 		"_exporter_id": "29418363"
 	},
 	"item": [
@@ -11,16 +11,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/admin",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"admin"
-					]
-				}
+				"url": "localhost:666/admin"
 			},
 			"response": []
 		},
@@ -44,16 +35,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/sesion",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"sesion"
-					]
-				}
+				"url": "localhost:666/sesion"
 			},
 			"response": []
 		},
@@ -62,16 +44,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/sesion",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"sesion"
-					]
-				}
+				"url": "localhost:666/sesion"
 			},
 			"response": []
 		},
@@ -80,16 +53,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/usuarios",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"usuarios"
-					]
-				}
+				"url": "localhost:666/usuarios"
 			},
 			"response": []
 		},
@@ -99,7 +63,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:666/usuarios/id?id=1",
+					"raw": "localhost:666/usuarios/id?id=3",
 					"host": [
 						"localhost"
 					],
@@ -111,7 +75,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "1"
+							"value": "3"
 						}
 					]
 				}
@@ -128,7 +92,7 @@
 					"formdata": [
 						{
 							"key": "nombre",
-							"value": "Hooper",
+							"value": "desconocido",
 							"type": "text"
 						},
 						{
@@ -143,21 +107,12 @@
 						},
 						{
 							"key": "rol",
-							"value": "mozo",
+							"value": "desconocido",
 							"type": "text"
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/usuarios",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"usuarios"
-					]
-				}
+				"url": "localhost:666/usuarios"
 			},
 			"response": []
 		},
@@ -171,7 +126,7 @@
 					"urlencoded": [
 						{
 							"key": "id",
-							"value": "2",
+							"value": "1",
 							"type": "text"
 						},
 						{
@@ -181,7 +136,7 @@
 						},
 						{
 							"key": "email",
-							"value": "tanito@gmail.com",
+							"value": "random@gmail.com",
 							"type": "text",
 							"disabled": true
 						},
@@ -200,22 +155,11 @@
 						{
 							"key": "estado",
 							"value": "activo",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/usuarios/",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"usuarios",
-						""
-					]
-				}
+				"url": "localhost:666/usuarios/"
 			},
 			"response": []
 		},
@@ -234,17 +178,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/usuarios/",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"usuarios",
-						""
-					]
-				}
+				"url": "localhost:666/usuarios/"
 			},
 			"response": []
 		},
@@ -253,17 +187,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/productos/",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"productos",
-						""
-					]
-				}
+				"url": "localhost:666/productos/"
 			},
 			"response": []
 		},
@@ -273,7 +197,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:666/productos/id?id=9",
+					"raw": "localhost:666/productos/id?id=1",
 					"host": [
 						"localhost"
 					],
@@ -285,7 +209,7 @@
 					"query": [
 						{
 							"key": "id",
-							"value": "9"
+							"value": "1"
 						}
 					]
 				}
@@ -302,7 +226,7 @@
 					"formdata": [
 						{
 							"key": "nombre",
-							"value": "Milanesa a caballo",
+							"value": "Ribs",
 							"type": "text"
 						},
 						{
@@ -312,27 +236,17 @@
 						},
 						{
 							"key": "precio",
-							"value": "2800",
+							"value": "15000",
 							"type": "text"
 						},
 						{
 							"key": "tiempoPreparacion",
-							"value": "45",
+							"value": "120",
 							"type": "text"
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/productos/",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"productos",
-						""
-					]
-				}
+				"url": "localhost:666/productos/"
 			},
 			"response": []
 		},
@@ -347,12 +261,11 @@
 						{
 							"key": "nombre",
 							"value": "Milanesa a caballo con fritas",
-							"type": "text",
-							"disabled": true
+							"type": "text"
 						},
 						{
 							"key": "id",
-							"value": "10",
+							"value": "1",
 							"type": "text"
 						},
 						{
@@ -362,16 +275,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/productos",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"productos"
-					]
-				}
+				"url": "localhost:666/productos"
 			},
 			"response": []
 		},
@@ -390,17 +294,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/productos/",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"productos",
-						""
-					]
-				}
+				"url": "localhost:666/productos/"
 			},
 			"response": []
 		},
@@ -413,17 +307,7 @@
 					"mode": "formdata",
 					"formdata": []
 				},
-				"url": {
-					"raw": "localhost:666/mesas/",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"mesas",
-						""
-					]
-				}
+				"url": "localhost:666/mesas/"
 			},
 			"response": []
 		},
@@ -432,17 +316,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/mesas/",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"mesas",
-						""
-					]
-				}
+				"url": "localhost:666/mesas/"
 			},
 			"response": []
 		},
@@ -464,17 +338,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/mesas/id",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"mesas",
-						"id"
-					]
-				}
+				"url": "localhost:666/mesas/id"
 			},
 			"response": []
 		},
@@ -504,17 +368,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/mesas/",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"mesas",
-						""
-					]
-				}
+				"url": "localhost:666/mesas/"
 			},
 			"response": []
 		},
@@ -528,21 +382,12 @@
 					"urlencoded": [
 						{
 							"key": "id",
-							"value": "3",
+							"value": "2",
 							"type": "text"
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/mesas",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"mesas"
-					]
-				}
+				"url": "localhost:666/mesas"
 			},
 			"response": []
 		},
@@ -551,16 +396,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/pedidos",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"pedidos"
-					]
-				}
+				"url": "localhost:666/pedidos"
 			},
 			"response": []
 		},
@@ -582,17 +418,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/pedidos/codigo",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"pedidos",
-						"codigo"
-					]
-				}
+				"url": "localhost:666/pedidos/codigo"
 			},
 			"response": []
 		},
@@ -606,7 +432,7 @@
 					"formdata": [
 						{
 							"key": "codigoPedido",
-							"value": "XEAmJxUaF3GBRc5q",
+							"value": "AbFhwZAuFgvmP64l",
 							"type": "text"
 						},
 						{
@@ -626,16 +452,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/pedidos",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"pedidos"
-					]
-				}
+				"url": "localhost:666/pedidos"
 			},
 			"response": []
 		},
@@ -649,7 +466,7 @@
 					"urlencoded": [
 						{
 							"key": "id",
-							"value": "3",
+							"value": "5",
 							"type": "text"
 						},
 						{
@@ -669,16 +486,7 @@
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/pedidos",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"pedidos"
-					]
-				}
+				"url": "localhost:666/pedidos"
 			},
 			"response": []
 		},
@@ -692,21 +500,12 @@
 					"urlencoded": [
 						{
 							"key": "id",
-							"value": "6",
+							"value": "5",
 							"type": "text"
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/pedidos",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"pedidos"
-					]
-				}
+				"url": "localhost:666/pedidos"
 			},
 			"response": []
 		},
@@ -722,18 +521,7 @@
 					"mode": "urlencoded",
 					"urlencoded": []
 				},
-				"url": {
-					"raw": "localhost:666/pedidos/por/sector",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"pedidos",
-						"por",
-						"sector"
-					]
-				}
+				"url": "localhost:666/pedidos/por/sector"
 			},
 			"response": []
 		},
@@ -742,19 +530,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/pedidos/sector/preparar/5",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"pedidos",
-						"sector",
-						"preparar",
-						"5"
-					]
-				}
+				"url": "localhost:666/pedidos/sector/preparar/7"
 			},
 			"response": []
 		},
@@ -763,19 +539,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/pedidos/sector/preparado/22",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"pedidos",
-						"sector",
-						"preparado",
-						"22"
-					]
-				}
+				"url": "localhost:666/pedidos/sector/preparado/7"
 			},
 			"response": []
 		},
@@ -784,19 +548,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/pedidos/entregar/pedido/22",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"pedidos",
-						"entregar",
-						"pedido",
-						"22"
-					]
-				}
+				"url": "localhost:666/pedidos/entregar/pedido/7"
 			},
 			"response": []
 		},
@@ -810,21 +562,12 @@
 					"formdata": [
 						{
 							"key": "codigo",
-							"value": "XEAmJxUaF3GBRc5q",
+							"value": "tKaeVsH4U9oPB2ph",
 							"type": "text"
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/cobrar",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"cobrar"
-					]
-				}
+				"url": "localhost:666/cobrar"
 			},
 			"response": []
 		},
@@ -839,21 +582,11 @@
 						{
 							"key": "archivo",
 							"type": "file",
-							"src": "/C:/Users/tanii/Desktop/productos.csv"
+							"src": "/C:/xampp_2/htdocs/LaComanda-SmirigliaFausto/app/productos.csv"
 						}
 					]
 				},
-				"url": {
-					"raw": "localhost:666/archivos/cargarProductos",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"archivos",
-						"cargarProductos"
-					]
-				}
+				"url": "localhost:666/archivos/cargarProductos"
 			},
 			"response": []
 		},
@@ -869,17 +602,7 @@
 					"mode": "formdata",
 					"formdata": []
 				},
-				"url": {
-					"raw": "localhost:666/archivos/descargarPedidos",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"archivos",
-						"descargarPedidos"
-					]
-				}
+				"url": "localhost:666/archivos/descargarPedidos"
 			},
 			"response": []
 		},
@@ -895,17 +618,7 @@
 					"mode": "formdata",
 					"formdata": []
 				},
-				"url": {
-					"raw": "localhost:666/archivos/descargarUsuarios",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"archivos",
-						"descargarUsuarios"
-					]
-				}
+				"url": "localhost:666/archivos/descargarUsuarios"
 			},
 			"response": []
 		},
@@ -914,17 +627,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": {
-					"raw": "localhost:666/archivos/promedio",
-					"host": [
-						"localhost"
-					],
-					"port": "666",
-					"path": [
-						"archivos",
-						"promedio"
-					]
-				}
+				"url": "localhost:666/estadisticas/promedio"
 			},
 			"response": []
 		},
@@ -933,14 +636,155 @@
 			"request": {
 				"method": "GET",
 				"header": [],
+				"url": "localhost:666/transacciones"
+			},
+			"response": []
+		},
+		{
+			"name": "Comentar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "codigoMesa",
+							"value": "AbFhwZAuFgvmP64l",
+							"type": "text"
+						},
+						{
+							"key": "puntaje",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "comentario",
+							"value": "relativamente buena comida",
+							"type": "text"
+						}
+					]
+				},
+				"url": "localhost:666/comentar"
+			},
+			"response": []
+		},
+		{
+			"name": "Mejores Comentarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:666/mejores-comentarios"
+			},
+			"response": []
+		},
+		{
+			"name": "Pedidos Fuera De Tiempo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:666/pedidos/fuera-de-tiempo"
+			},
+			"response": []
+		},
+		{
+			"name": "Exportar Logo PDF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:666/exportar-logo"
+			},
+			"response": []
+		},
+		{
+			"name": "Cantidad Operaciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:666/usuarios/cantidad-operaciones"
+			},
+			"response": []
+		},
+		{
+			"name": "Cantidad Operaciones usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:666/usuarios/cantidad-operaciones-usuarios"
+			},
+			"response": []
+		},
+		{
+			"name": "Productos Ordenados por ventas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:666/productos/orden-mas-ventas"
+			},
+			"response": []
+		},
+		{
+			"name": "Registro Login Usuario",
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "localhost:666/transacciones",
+					"raw": "localhost:666/usuarios/registro-login?idUsuario=3",
 					"host": [
 						"localhost"
 					],
 					"port": "666",
 					"path": [
-						"transacciones"
+						"usuarios",
+						"registro-login"
+					],
+					"query": [
+						{
+							"key": "idUsuario",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mesas Ordenadas Menor Factura",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:666/mesas/orden-menor-factura"
+			},
+			"response": []
+		},
+		{
+			"name": "Facturacion Entre Fechas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:666/mesas/facturacion-entre-fechas?codigo=AbFhwZAuFgvmP64l&fechaEntrada=2023-12-12 23:31:27&fechaSalida=2023-12-12 23:43:37",
+					"host": [
+						"localhost"
+					],
+					"port": "666",
+					"path": [
+						"mesas",
+						"facturacion-entre-fechas"
+					],
+					"query": [
+						{
+							"key": "codigo",
+							"value": "AbFhwZAuFgvmP64l"
+						},
+						{
+							"key": "fechaEntrada",
+							"value": "2023-12-12 23:31:27"
+						},
+						{
+							"key": "fechaSalida",
+							"value": "2023-12-12 23:43:37"
+						}
 					]
 				}
 			},

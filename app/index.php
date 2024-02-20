@@ -76,6 +76,10 @@ $app->group('/usuarios', function (RouteCollectorProxy $group) {
 
     $group->get('/cantidad-operaciones', \LogTransaccionesController::class . ':CalcularCantidadOperaciones');
     $group->get('/cantidad-operaciones-usuarios', \LogTransaccionesController::class . ':CalcularCantidadOperacionesUsuarios');
+
+    $group->get('/registro-login', \UsuarioController::class . ':ObtenerRegistroLogin')
+    ->add(\AutenticadorUsuario::class.':ValidarCampoIdUsuario');
+
 })
 ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol')
 ->add(\Logger::class.':ValidarSesionIniciada');
@@ -109,6 +113,13 @@ $app->group('/mesas', function (RouteCollectorProxy $group) {
     ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol');
     $group->delete('[/]', \MesaController::class.':BorrarUno')
     ->add(\AutenticadorMesas::class.':ValidarMesa')
+    ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol');
+
+    $group->get('/orden-menor-factura', \MesaController::class.':TraerOrdenadaMenorFactura')
+    ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol');
+
+    $group->get('/facturacion-entre-fechas', \MesaController::class.':GetCobroEntreDosFechas')
+    ->add(\AutenticadorMesas::class.':ValidarCamposCobroEntreFechas')
     ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol');
     
 })->add(\Logger::class.':ValidarSesionIniciada');

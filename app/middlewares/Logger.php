@@ -1,11 +1,19 @@
 <?php
     require_once './models/Usuario.php';
+    require_once './models/RegistroLogin.php';
     class Logger
     {
         public static function LogOperacion($request, $response, $next)
         {
             $retorno = $next($request, $response);
             return $retorno;
+        }
+
+        private static function RegistrarLogin($idUsuario)
+        {
+            $registroLogin = new RegistroLogin();
+            $registroLogin->idUsuario = $idUsuario;
+            $registroLogin->CrearRegistroLogin();
         }
 
         public static function LimpiarCoockieUsuario($request, $handler){
@@ -22,6 +30,7 @@
                 $token = AutentificadorJWT::CrearToken(array('id' => $usuario->id, 'nombre' => $usuario->nombre, 'email' => $usuario->email, 'rol' => $usuario->rol, 'estado' => $usuario->estado));
                 setcookie('JWT', $token, time()+60*60*24*30, '/', 'localhost', false, true);
                 $payload = json_encode(array('mensaje'=>'Logueo Exitoso - Usted es: [ '.$usuario->rol.' ]'));
+                Logger::RegistrarLogin($usuario->id);
             }
             else{
                 $payload = json_encode(array('mensaje'=>'Datos Invalidos'));

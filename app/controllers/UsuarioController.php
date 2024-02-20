@@ -1,5 +1,6 @@
 <?php
 require_once './models/Usuario.php';
+require_once './models/RegistroLogin.php';
 require_once './interfaces/IApiUsable.php';
 
 class UsuarioController extends Usuario implements IApiUsable
@@ -91,6 +92,19 @@ class UsuarioController extends Usuario implements IApiUsable
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
     }
+
+
+    public function ObtenerRegistroLogin($request, $response, $args)
+    {
+        $parametros = $request->getQueryParams();
+        $idUsuario = $parametros['idUsuario'];
+        $registro = RegistroLogin::ObtenerPorUsuario($idUsuario);
+        $payload = json_encode(array("registroLogin" => $registro));
+
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+
 
     public static function ExportarLogo($request, $response, $args)
     {

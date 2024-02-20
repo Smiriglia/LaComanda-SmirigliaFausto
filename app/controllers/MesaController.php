@@ -20,6 +20,32 @@ class MesaController extends Mesa implements IApiUsable{
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
     }
+
+    public function TraerOrdenadaMenorFactura($request, $response, $args){
+        $mesas = Mesa::obtenerTodos();
+
+        usort($mesas, function($mesa1, $mesa2) {
+            if ($mesa1->estado !== 'cerrada' || $mesa1->cobro === null) {
+                return 1; 
+            }
+            if ($mesa2->estado !== 'cerrada' || $mesa2->cobro === null) {
+                return -1;
+            }
+            
+            if ($mesa1->cobro < $mesa2->cobro) {
+                return -1;
+            } elseif ($mesa1->cobro > $mesa2->cobro) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
+        $payload = json_encode(array("listaMesas" => $mesas));
+
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
     
     public function CargarUno($request, $response, $args){
         $cookies = $request->getCookieParams();
@@ -79,20 +105,57 @@ class MesaController extends Mesa implements IApiUsable{
 
     public static function CerrarMesa($request, $response, $args) {
         $parametros = $request->getParsedBody();
-        if(isset($parametros['codigo'])){
-            $listaPedidos = Pedido::obtenerPedidosPorMesa($parametros['codigo']);
+        $codigoMesa = $parametros['codigo'];
+        if(isset($codigoMesa)){
+            $listaPedidos = Pedido::obtenerPedidosPorMesa($codigoMesa);
+            $mesa = Mesa::obtenerMesaCodigoMesa($codigoMesa);
             $precioACobrar = 0;
             foreach($listaPedidos as $pedido){
                 if($pedido->estado == 'completado'){
                     $precioACobrar += $pedido->importe;
                 }
             }
+            $mesa->cobro = $precioACobrar;
+            Mesa::modificarMesa($mesa);
             $payload = json_encode(array("mensaje" => "Mesa cerrada - Total a pagar: [ ".$precioACobrar." ]"));
         }
         else{
             $payload = json_encode(array("mensaje" => "No se encontro la mesa"));
         }
         Mesa::CobrarYCerrarMesa($parametros['codigo']);
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
+
+    public static function GetCobroEntreDosFechas($request, $response, $args){
+        $parametros = $request->getQueryParams();
+        $codigoMesa = $parametros['codigo'];
+        $fechaEntrada = DateTime::createFromFormat('Y-m-d H:i:s', $parametros["fechaEntrada"]);
+        $fechaSalida = DateTime::createFromFormat('Y-m-d H:i:s', $parametros["fechaSalida"]);
+        if(isset($codigoMesa)){
+            $listaPedidos = Pedido::obtenerPedidosPorMesa($codigoMesa);
+            $mesa = Mesa::obtenerMesaCodigoMesa($codigoMesa);
+            if ($mesa->estado == "cerrada")
+            {
+                $totalFacturado = 0;
+                foreach($listaPedidos as $pedido){
+                    if($pedido->estado == 'completado'){
+                        $fechaPedido = DateTime::createFromFormat('Y-m-d H:i:s', $pedido->fechaInicio);
+                        if ($fechaPedido >= $fechaEntrada && $fechaPedido <= $fechaSalida) {
+                            $totalFacturado += $pedido->importe * $pedido->cantidad;
+                        }
+                    }
+                }
+                $payload = json_encode(array("mensaje" => "Total a facturado entre fechas: [ ".$totalFacturado." ]"));
+            }
+            else
+            {
+                $payload = json_encode(array("mensaje" => "La mesa no esta cerrada"));
+            }
+        }
+        else{
+            $payload = json_encode(array("mensaje" => "No se encontro la mesa"));
+        }
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
     }

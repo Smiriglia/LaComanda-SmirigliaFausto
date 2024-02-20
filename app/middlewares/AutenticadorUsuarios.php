@@ -44,6 +44,14 @@
             throw new Exception('Campos Invalidos');
         }
 
+        public static function ValidarCampoIdUsuario($request, $handler){
+            $parametros = $request->getQueryParams();
+            if(isset($parametros['idUsuario'])){
+                return $handler->handle($request);
+            }
+            throw new Exception('Campos Invalidos');
+        }
+
         public static function ValidarRolUsuario($rol){
             if($rol !== null){
                 if(empty($rol) || $rol != 'socio' && $rol != 'bartender' && $rol != 'cocinero' && $rol != 'mozo' && $rol != 'candybar'){

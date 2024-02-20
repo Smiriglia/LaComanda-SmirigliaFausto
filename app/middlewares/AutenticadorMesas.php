@@ -44,6 +44,26 @@
             throw new Exception('la mesa no esta cerrada');
         }
 
+        public static function ValidarCamposCobroEntreFechas($request, $handler){
+            $parametros = $request->getQueryParams();
+            if (isset($parametros['codigo']) && isset($parametros['fechaEntrada']) && isset($parametros['fechaSalida']))
+            {
+                $mesa = Mesa::obtenerMesaCodigoMesa($parametros['codigo']);
+                if($mesa && $mesa->estado == "cerrada")
+                {
+                    return $handler->handle($request);
+                }
+                else
+                {
+                    throw new Exception('la mesa no esta cerrada o no existe');
+                }
+            }
+            else
+            {
+                throw new Exception('Campos Invalidos');
+            }
+        }
+
 
         public static function ValidarMesaExistente($mesa){
             if($mesa){

@@ -5,6 +5,7 @@ class Mesa{
     public $codigo;
     public $estado;
     public $nombreMozo;
+    public $cobro;
     
     public function crearMesa(){
         $objAccesoDatos = AccesoDatos::obtenerInstancia();
@@ -20,7 +21,7 @@ class Mesa{
 
     public static function obtenerTodos(){
         $objAccesoDatos = AccesoDatos::obtenerInstancia();
-        $consulta = $objAccesoDatos->prepararConsulta("SELECT id, codigo, estado, nombreMozo FROM mesas");
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM mesas");
         $consulta->execute();
 
         return $consulta->fetchAll(PDO::FETCH_CLASS, 'Mesa');
@@ -28,7 +29,7 @@ class Mesa{
 
     public static function obtenerMesa($id){
         $objAccesoDatos = AccesoDatos::obtenerInstancia();
-        $consulta = $objAccesoDatos->prepararConsulta("SELECT id, codigo, estado, nombreMozo FROM mesas WHERE id = :id");
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM mesas WHERE id = :id");
         $consulta->bindValue(':id', $id, PDO::PARAM_STR);
         $consulta->execute();
 
@@ -37,7 +38,7 @@ class Mesa{
 
     public static function obtenerMesaCodigoMesa($codigoMesa){
         $objAccesoDatos = AccesoDatos::obtenerInstancia();
-        $consulta = $objAccesoDatos->prepararConsulta("SELECT id, codigo, estado, nombreMozo FROM mesas WHERE codigo = :codigoMesa");
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT * FROM mesas WHERE codigo = :codigoMesa");
         $consulta->bindValue(':codigoMesa', $codigoMesa, PDO::PARAM_STR);
         $consulta->execute();
 
@@ -46,10 +47,11 @@ class Mesa{
 
     public static function modificarMesa($mesa){
         $objAccesoDato = AccesoDatos::obtenerInstancia();
-        $consulta = $objAccesoDato->prepararConsulta("UPDATE mesas SET nombreMozo = :nombreMozo, estado = :estado WHERE id = :id");
+        $consulta = $objAccesoDato->prepararConsulta("UPDATE mesas SET nombreMozo = :nombreMozo, estado = :estado, cobro = :cobro WHERE id = :id");
         $consulta->bindValue(':id', $mesa->id, PDO::PARAM_INT);
         $consulta->bindValue(':estado', $mesa->estado, PDO::PARAM_STR);
         $consulta->bindValue(':nombreMozo', $mesa->nombreMozo, PDO::PARAM_STR);
+        $consulta->bindValue(':cobro', $mesa->cobro, PDO::PARAM_INT);
         $consulta->execute();
     }
 
