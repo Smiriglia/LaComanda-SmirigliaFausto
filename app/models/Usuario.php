@@ -85,19 +85,32 @@ class Usuario
     }
 
     public static function ExportarPDF($path = "./usuarios.pdf")
-        {
-            $pdf = new PDF();
-            $pdf->AddPage();
-            
-            $usuarios = Usuario::obtenerTodos();
+    {
+        $pdf = new PDF();
+        $pdf->AddPage();
+        
+        $usuarios = Usuario::obtenerTodos();
 
-            // Agregar objetos al PDF
-            foreach ($usuarios as $usuario) {
-                $pdf->ChapterTitle($usuario->nombre);
-                $pdf->ChapterBody($usuario->email . " " .  $usuario->rol . " " . $usuario->estado);
-                $pdf->Ln();
-            }
-
-            $pdf->Output($path, 'F');
+        // Agregar objetos al PDF
+        foreach ($usuarios as $usuario) {
+            $pdf->ChapterTitle($usuario->nombre);
+            $pdf->ChapterBody($usuario->email . " " .  $usuario->rol . " " . $usuario->estado);
+            $pdf->Ln();
         }
+
+        $pdf->Output($path, 'F');
+    }
+
+    public static function ObtenerSectores()
+    {
+        $sectores = [];
+        $usuarios = Usuario::obtenerTodos();
+
+        foreach ($usuarios as $usuario)
+        {
+            $sectores[$usuario->rol] = 0;
+        }
+
+        return $sectores;
+    }
 }

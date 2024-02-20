@@ -17,6 +17,30 @@ class PedidoController extends Pedido implements IApiUsable{
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
     }
+
+    public function TraerFueraDeTiempo($request, $response, $args){
+        $lista = Pedido::obtenerTodos();
+        $listaFueraTiempo = [];
+        foreach ($lista as $pedido)
+        {
+            if (isset($pedido->fechaCierre))
+            {
+                $producto = Producto::obtenerProducto($pedido->idProducto);
+                $inicio = new DateTime($pedido->fechaInicio);
+                $cierre = new DateTime($pedido->fechaCierre);
+                $diferencia = $inicio->diff($cierre);
+                $minutos = $diferencia->days * 24 * 60;
+                $minutos += $diferencia->h * 60;
+                $minutos += $diferencia->i;
+                if ($minutos >= $producto->tiempoPreparacion)
+                    $listaFueraTiempo[] = $pedido;
+            }
+
+        }
+        $payload = json_encode(array("listaPedidosFueraTiempo" => $listaFueraTiempo));
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
     
     public function CargarUno($request, $response, $args){
         $parametros = $request->getParsedBody();
@@ -107,6 +131,8 @@ class PedidoController extends Pedido implements IApiUsable{
         return $response->withHeader('Content-Type', 'application/json');
     }
 
+
+
     public static function RecibirPedidos($request, $response, $args) {
         $idPedido = $args['idPedido'];
         $pedido = Pedido::obtenerPedidoIndividual($idPedido);
@@ -183,7 +209,31 @@ class PedidoController extends Pedido implements IApiUsable{
         $payload = json_encode(array("mensaje" => "El importe promedio en los ultimos 30 dias fue de: " . $promedio));
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
-    } 
+    }
+
+    public function ListarProductosPorVentas($request, $response, $args)
+    {   
+        $contadorProductos = [];
+        $pedidos = Pedido::obtenerTodos();
+        $productos = Producto::obtenerTodos();
+        foreach ($pedidos as $pedido)
+        {
+            $producto = Producto::obtenerProducto($pedido->idProducto);
+            if (isset($contadorProductos[strval($producto->id)]))
+                $contadorProductos[strval($producto->id)] += 1;
+            else
+                $contadorProductos[strval($producto->id)] = 1;
+        }
+        usort($productos, function($a, $b) use ($contadorProductos) {
+            $cantidad_a = isset($contadorProductos[$a->id]) ? $contadorProductos[$a->id] : 0;
+            $cantidad_b = isset($contadorProductos[$b->id]) ? $contadorProductos[$b->id] : 0;
+            return $cantidad_b - $cantidad_a;
+        });
+
+        $payload = json_encode(array("listaProductoOrdenada" => $productos));
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
 
     
 }

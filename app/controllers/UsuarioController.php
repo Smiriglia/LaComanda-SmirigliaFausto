@@ -91,5 +91,27 @@ class UsuarioController extends Usuario implements IApiUsable
         $response->getBody()->write($payload);
         return $response->withHeader('Content-Type', 'application/json');
     }
+
+    public static function ExportarLogo($request, $response, $args)
+    {
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+        $pdf->Cell(0, 10, 'Logo Empresa', 0, 1, 'C');
+        $pdf->Ln(10);
+        $imagen = './logo.jpg';
+        list($ancho, $alto) = getimagesize($imagen);
+        $ancho_pdf = 100;
+        $alto_pdf = $alto * ($ancho_pdf / $ancho);
+
+        $pdf->Image($imagen, 10, 30, $ancho_pdf);
+
+        $pdf->Output('./logo.pdf', 'F');
+
+        $payload = json_encode(array("mensaje" => "logo exportado correctamente"));
+
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
+    }
     
 }

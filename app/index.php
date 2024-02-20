@@ -17,6 +17,7 @@ require_once './middlewares/AutenticadorUsuarios.php';
 require_once './middlewares/AutenticadorProductos.php';
 require_once './middlewares/AutenticadorMesas.php';
 require_once './middlewares/AutenticadorPedidos.php';
+require_once './middlewares/AutenticadorComentarios.php';
 require_once './middlewares/log_middleware.php';
 require_once './middlewares/Logger.php';
 require_once './controllers/UsuarioController.php';
@@ -24,6 +25,8 @@ require_once './controllers/ProductoController.php';
 require_once './controllers/log_transacciones_controller.php';
 require_once './controllers/MesaController.php';
 require_once './controllers/PedidoController.php';
+require_once './controllers/ComentarioController.php';
+require_once './utilidades/class_pdf.php';
 
 // Load ENV
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -64,12 +67,15 @@ $app->group('/sesion', function (RouteCollectorProxy $group) {
 // Routes
 $app->group('/usuarios', function (RouteCollectorProxy $group) {
     $group->get('[/]', \UsuarioController::class . ':TraerTodos');
-    $group->get('/id', \UsuarioController::class . ':TraerUno');   
+    $group->get('/id', \UsuarioController::class . ':TraerUno');
     $group->post('[/]', \UsuarioController::class . ':CargarUno')
     ->add(\AutenticadorUsuario::class.':ValidarCampos');
     $group->put('[/]', \UsuarioController::class . ':ModificarUno')
     ->add(\AutenticadorUsuario::class.':ValidarCampos');
     $group->delete('[/]', \UsuarioController::class . ':BorrarUno');
+
+    $group->get('/cantidad-operaciones', \LogTransaccionesController::class . ':CalcularCantidadOperaciones');
+    $group->get('/cantidad-operaciones-usuarios', \LogTransaccionesController::class . ':CalcularCantidadOperacionesUsuarios');
 })
 ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol')
 ->add(\Logger::class.':ValidarSesionIniciada');
@@ -88,6 +94,7 @@ $app->group('/productos', function (RouteCollectorProxy $group) {
     $group->delete('[/]', \ProductoController::class.':BorrarUno')
     ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol')
     ->add(\Logger::class.':ValidarSesionIniciada');
+    $group->get('/orden-mas-ventas', PedidoController::class.':ListarProductosPorVentas');
 });
 
 $app->group('/mesas', function (RouteCollectorProxy $group) {
@@ -114,12 +121,15 @@ $app->group('/cobrar', function (RouteCollectorProxy $group) {
 $app->group('/pedidos', function (RouteCollectorProxy $group) {
     $group->get('[/]', \PedidoController::class.':TraerTodos')
     ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRolDoble');
+    $group->get('/fuera-de-tiempo', \PedidoController::class.':TraerFueraDeTiempo')
+    ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol');
     $group->get('/codigo', \PedidoController::class.':TraerUno')
     ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRolDoble');
     $group->post('[/]', \PedidoController::class.':CargarUno')
     ->add(\AutenticadorPedidos::class.':ValidarCamposAlta')
     ->add(function ($request, $handler){
         return \AutenticadorUsuario::ValidarPermisosDeRol($request, $handler, 'mozo');
+    
     });
     $group->put('[/]', \PedidoController::class.':ModificarUno')
     ->add(\AutenticadorPedidos::class.':ValidarCamposModificar')
@@ -153,12 +163,31 @@ $app->get('/transacciones', \LogTransaccionesController::class.':GetTransaccione
 ->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol')
 ->add(\Logger::class.':ValidarSesionIniciada');
 
+$app->post('/comentar', \ComentarioController::class.':CargarUno')
+->add(\AutenticadorMesas::class.':ValidarMesaCerrada')
+->add(\AutenticadorComentarios::class.':ValidarCodigoMesa')
+->add(\AutenticadorMesas::class.':ValidarMesaCodigoMesa')
+->add(\AutenticadorComentarios::class.':ValidarCamposComentario')
+->add(function ($request, $handler){
+    return \AutenticadorUsuario::ValidarPermisosDeRolDoble($request, $handler, 'cliente');
+});;
+
+
+$app->get('/mejores-comentarios', \ComentarioController::class.':TraerMejores')
+->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol');
+
+$app->get('/exportar-logo', \UsuarioController::class.':ExportarLogo')
+->add(\AutenticadorUsuario::class.':ValidarPermisosDeRol');
 
 $app->get('[/]', function (Request $request, Response $response) {
     $payload = json_encode(array("mensaje" => "Prueba de conex"));
     $response->getBody()->write($payload);
     return $response->withHeader('Content-Type', 'application/json');
 });
+
+
+
+
 
 
 

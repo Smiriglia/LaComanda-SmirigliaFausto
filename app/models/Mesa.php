@@ -34,6 +34,16 @@ class Mesa{
 
         return $consulta->fetchObject('Mesa');
     }
+
+    public static function obtenerMesaCodigoMesa($codigoMesa){
+        $objAccesoDatos = AccesoDatos::obtenerInstancia();
+        $consulta = $objAccesoDatos->prepararConsulta("SELECT id, codigo, estado, nombreMozo FROM mesas WHERE codigo = :codigoMesa");
+        $consulta->bindValue(':codigoMesa', $codigoMesa, PDO::PARAM_STR);
+        $consulta->execute();
+
+        return $consulta->fetchObject('Mesa');
+    }
+
     public static function modificarMesa($mesa){
         $objAccesoDato = AccesoDatos::obtenerInstancia();
         $consulta = $objAccesoDato->prepararConsulta("UPDATE mesas SET nombreMozo = :nombreMozo, estado = :estado WHERE id = :id");
